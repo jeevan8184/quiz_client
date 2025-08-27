@@ -32,11 +32,7 @@ const NotificationItem = ({ notification, onDelete }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      onClick={() => {
-        const url = new URL(notification.inviteLink);
-        const path = url.pathname + url.search;
-        navigate(path);
-      }}
+      onClick={() => window.open(notification.link)}
       className="cursor-pointer"
     >
       <div
