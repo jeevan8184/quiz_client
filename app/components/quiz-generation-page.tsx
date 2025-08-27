@@ -676,7 +676,7 @@ export default function QuizGenerationPage({
                     <div className="ml-6 space-y-3">
                       <div>
                         <label className="block text-cyan-100 mb-2 text-sm">
-                          Time limit (minutes)
+                          Time limit (seconds) : each question timer
                         </label>
                         <input
                           type="number"

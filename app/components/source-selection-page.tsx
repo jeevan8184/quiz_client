@@ -194,7 +194,7 @@ export default function SourceSelectionPage({
     const urls: { [key: string]: string } = {
       wikipedia: "https://en.wikipedia.org/wiki/Artificial_intelligence",
       news: "https://www.bbc.com/news/technology",
-      blog: "https://blog.example.com/machine-learning-basics",
+      blog: "https://www.geeksforgeeks.org/machine-learning/machine-learning",
     };
     setUrlContent(urls[type]);
     setError("");
@@ -564,7 +564,7 @@ export default function SourceSelectionPage({
               </div>
               <div className="bg-cyan-500/10 border border-cyan-300/30 rounded-md p-3 sm:p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Close className="text-cyan-300 h-4 w-4 sm:h-5 sm:w-5" />
+                  <CloseIcon className="text-cyan-300 h-4 w-4 sm:h-5 sm:w-5" />
                   <span className="text-cyan-300 font-medium text-sm sm:text-base">
                     URL Processing
                   </span>

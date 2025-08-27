@@ -434,7 +434,7 @@ export default function AIGeneratePage() {
           </div>
 
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 mb-6"
+            className="flex sm:flex-row items-center justify-between gap-2 sm:gap-4 mb-6"
             variants={itemVariants}
           >
             {steps.map((stepObj, idx) => (
