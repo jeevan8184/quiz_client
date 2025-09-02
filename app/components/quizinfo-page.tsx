@@ -17,6 +17,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import InfoIcon from "@mui/icons-material/Info";
 import ImageIcon from "@mui/icons-material/Image";
+import { Autocomplete, TextField } from "@mui/material";
 
 interface QuizInfoPageProps {
   currentStep: number;
@@ -82,6 +83,23 @@ export default function QuizInfoPage({
     setCurrentStep(currentStep + 1);
     setError("");
   };
+
+  const categories = [
+    "Arts & Literature",
+    "Film & TV",
+    "Food & Drink",
+    "General Knowledge",
+    "Geography",
+    "History",
+    "Music",
+    "Science",
+    "Society & Culture",
+    "Sport & Leisure",
+    "Mathematics",
+    "English",
+    "Computer Science",
+    "Other",
+  ];
 
   if (currentStep !== 2) {
     return (
@@ -191,39 +209,54 @@ export default function QuizInfoPage({
               <label className="block text-sm font-medium text-cyan-100 mb-2">
                 Subject *
               </label>
-              <select
+              <Autocomplete
                 value={quiz.subject}
-                onChange={(e) => handleInputChange(e, "subject")}
-                className="w-full p-3 bg-black/30 border border-cyan-300/30 rounded-lg text-cyan-300 text-sm focus:border-cyan-500 focus:outline-none transition-colors duration-200"
-              >
-                <option value="" className="text-cyan-300 bg-black">
-                  Select subject...
-                </option>
-                <option value="mathematics" className="text-cyan-300 bg-black">
-                  Mathematics
-                </option>
-                <option value="science" className="text-cyan-300 bg-black">
-                  Science
-                </option>
-                <option value="history" className="text-cyan-300 bg-black">
-                  History
-                </option>
-                <option value="english" className="text-cyan-300 bg-black">
-                  English
-                </option>
-                <option value="geography" className="text-cyan-300 bg-black">
-                  Geography
-                </option>
-                <option
-                  value="computer-science"
-                  className="text-cyan-300 bg-black"
-                >
-                  Computer Science
-                </option>
-                <option value="other" className="text-cyan-300 bg-black">
-                  Other
-                </option>
-              </select>
+                onChange={(event, newValue) => {
+                  setQuiz((prev) => ({ ...prev, subject: newValue || "" }));
+                  setError("");
+                }}
+                onInputChange={(event, newInputValue) => {
+                  setQuiz((prev) => ({ ...prev, subject: newInputValue }));
+                }}
+                options={categories}
+                freeSolo
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    placeholder="Search or type a subject..."
+                    variant="outlined"
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        padding: "2px 8px !important",
+                        "& fieldset": { borderColor: "rgba(6,182,212,0.3)" },
+                        "&:hover fieldset": {
+                          borderColor: "rgba(6,182,212,0.7)",
+                        },
+                        "&.Mui-focused fieldset": { borderColor: "#06b6d4" },
+                        "& input": {
+                          color: "#cffafe",
+                          padding: "10px 4px !important",
+                        },
+                      },
+                      "& .MuiAutocomplete-popupIndicator, & .MuiAutocomplete-clearIndicator":
+                        {
+                          color: "#94a3b8",
+                        },
+                    }}
+                  />
+                )}
+                PaperComponent={(props) => (
+                  <div
+                    {...props}
+                    style={{
+                      backgroundColor: "#020617",
+                      color: "white",
+                      border: "1px solid rgba(6,182,212,0.3)",
+                      borderRadius: "8px",
+                    }}
+                  />
+                )}
+              />
             </div>
             <div>
               <label className="block text-sm font-medium text-cyan-100 mb-2">
